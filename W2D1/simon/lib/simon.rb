@@ -19,18 +19,29 @@ class Simon
 
   def take_turn
     show_sequence
-    require_sequence
-    round_success_message
-    add_random_color
+    inputted_seq = require_sequence
+
+    if check_sequence(inputted_seq)
+      round_success_message
+    else
+      self.game_over = true
+    end
+
     self.sequence_length += 1
+  end
+
+  def check_sequence(inputted_seq)
+    seq == inputted_seq
   end
 
   def show_sequence
     add_random_color
+    puts "#{self.seq}"
   end
 
   def require_sequence
-
+    puts "WHAT'S THE SEQUENCE? (INPUT EXAMPLE: color, color, color)"
+    player_sequence = gets.chomp.split(",")
   end
 
   def add_random_color
@@ -42,7 +53,7 @@ class Simon
   end
 
   def game_over_message
-
+    puts "WRONG! GAME OVER"
   end
 
   def reset_game
