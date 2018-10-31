@@ -39,7 +39,9 @@ describe Dessert do
     it "shuffles the ingredient array" do
       dessert.add_ingredient('flour')
       dessert.add_ingredient('egg')
-      expect(dessert.mix!).to_not eq(['chocolate', 'flour', 'egg'])
+      dessert.add_ingredient('salt')
+      dessert.add_ingredient('sugar')
+      expect(dessert.mix!).to_not eq(['chocolate', 'flour', 'egg', 'salt', 'sugar'])
     end
   end
 
